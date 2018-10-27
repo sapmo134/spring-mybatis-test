@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="my">
+
+  <resultMap id="select01ResultMap" type="my.model.SimpleEntity">
+    <result property="name" column="name"/>
+    <result property="value" column="value"/>
+  </resultMap>
+
+  <insert id="insert01" parameterType="my.model.SimpleEntity">
+    INSERT INTO simple (name, value) VALUES (#{name}, #{value})
+  </insert>
+
+  <select id="select01" parameterType="my.model.SimpleEntity" resultMap="select01ResultMap">
+    SELECT name, value FROM simple WHERE name=#{name}
+  </select>
+
+</mapper>
